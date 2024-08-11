@@ -1,4 +1,4 @@
-const birthday = new Date('2024-08-3'); // Change to your birthday date
+const birthday = new Date('2024-09-12'); // Change to your birthday date
 const now = new Date();
 const countdownElement = document.getElementById('countdown');
 const contentElement = document.getElementById('content');

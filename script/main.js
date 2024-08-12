@@ -1,6 +1,6 @@
 const birthday = new Date('2024-09-12'); // Change to your birthday date
-// const now = new Date();
-const now = new Date('2024-09-12');
+const now = new Date();
+// const now = new Date('2024-09-12');
 const countdownElement = document.getElementById('countdown');
 const contentElement = document.getElementById('content');
 const waitingMessages = [

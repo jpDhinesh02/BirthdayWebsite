@@ -31,7 +31,10 @@ body {
 }
 
 #timer {
-  font-size: 20px;
+  font-size: 45px;
+  color: #8762cb;
+}
+#waitingMessage{
   color: #8762cb;
 }
 

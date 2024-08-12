@@ -407,3 +407,44 @@ const animationTimeline = () => {
 };
 // Run fetch and animation in sequence
 fetchData();
+
+
+
+document.addEventListener('click', (event) => {
+  const heartContainer = document.getElementById('heart-container');
+  const numHearts = 10; // Number of hearts per click
+  const heartSize = 2; // Size multiplier
+  const delayBetweenHearts = 100; // Delay between each heart in milliseconds
+
+  for (let i = 0; i < numHearts; i++) {
+      setTimeout(() => {
+          // Create heart element
+          const heart = document.createElement('span');
+          heart.className = 'heart';
+          heart.textContent = '❤️';
+          heart.style.fontSize = `${heartSize}rem`;
+          
+          // Randomize the position around the click
+          const offsetX = (Math.random() - 0.5) * 20; // Adjust range for randomness
+          const offsetY = (Math.random() - 0.5) * 20;
+          heart.style.left = `${event.clientX + offsetX}px`;
+          heart.style.top = `${event.clientY + offsetY}px`;
+
+          // Apply animation
+          heart.style.opacity = 1;
+          heart.style.animation = `flyUp 1s forwards`;
+
+          // Append heart to container
+          heartContainer.appendChild(heart);
+
+          // Remove heart from DOM after animation ends
+          heart.addEventListener('animationend', () => {
+              heart.remove();
+          }, { once: true });
+      }, i * delayBetweenHearts); // Stagger heart creation
+  }
+});
+
+
+
+

@@ -60,21 +60,49 @@ function updateCountdown() {
   waitingMessageElement.innerHTML = waitingMessages[randomIndex];
 
 }
-var audio
+function enableAudioOnInteraction() {
+  const interactionEvents = ['click', 'scroll', 'mousemove', 'keydown', 'touchstart'];
+  
+  interactionEvents.forEach(event => {
+    window.addEventListener(event, function playOnInteraction() {
+      audio.play().catch(error => {
+        console.error("Audio playback failed after interaction:", error);
+      });
+      // Remove event listener after first successful interaction
+      window.removeEventListener(event, playOnInteraction);
+    }, { once: true });
+  });
+}
+let audio
 if (now < birthday) {
   countdownElement.style.display = 'block';
   updateCountdown();
   audio = new Audio('audio/wait.mp3');
+  audio.preload = 'auto';
   audio.loop = true;
-  audio.autoplay = true;
+  audio.load(); 
+  audio.play().catch(error => {
+    console.warn("Autoplay was blocked:", error);
+    enableAudioOnInteraction();
+  });
   setInterval(updateCountdown, 1000);
 } else {
   countdownElement.style.display = 'none';
   contentElement.style.display = 'block';
   audio = new Audio('audio/Good_Morning_to_All(chosic.com).mp3');
+  audio.preload = 'auto';
   audio.loop = true;
-  audio.autoplay = true;
+  audio.load(); 
+  audio.play().catch(error => {
+    console.warn("Autoplay was blocked:", error);
+    enableAudioOnInteraction();
+  });
 }
+
+
+
+
+
 // Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")

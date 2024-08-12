@@ -1,5 +1,6 @@
 const birthday = new Date('2024-09-12'); // Change to your birthday date
 const now = new Date();
+// const now = new Date('2024-09-12');
 const countdownElement = document.getElementById('countdown');
 const contentElement = document.getElementById('content');
 const waitingMessages = [
@@ -45,29 +46,31 @@ const waitingMessages = [
   "Right around the bend...",
   "Moments from now..."
 ];
-if (now < birthday) {
-  countdownElement.style.display = 'block';
+function updateCountdown() {
+  const now = new Date();
+  const timeLeft = birthday - now;
   const timerElement = document.getElementById('timer');
   const waitingMessageElement = document.getElementById('waitingMessage');
-  function updateCountdown() {
-    const now = new Date();
-    const timeLeft = birthday - now;
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-    timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    const randomIndex = Math.floor(Math.random() * waitingMessages.length);
-    waitingMessageElement.innerHTML = waitingMessages[randomIndex];
+  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  const randomIndex = Math.floor(Math.random() * waitingMessages.length);
+  waitingMessageElement.innerHTML = waitingMessages[randomIndex];
 
-  }
+}
+if (now < birthday) {
+  countdownElement.style.display = 'block';
   updateCountdown();
   setInterval(updateCountdown, 1000);
 } else {
+  countdownElement.style.display = 'none';
   contentElement.style.display = 'block';
+  var audio = new Audio('audio/Good_Morning_to_All(chosic.com).mp3');
+  audio.loop = true;
+  audio.autoplay = true;
 }
-
-
 // Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")
@@ -93,7 +96,6 @@ const fetchData = () => {
       });
     });
 };
-
 // Animation Timeline
 const animationTimeline = () => {
   // Spit chars that needs to be animated individually
@@ -371,6 +373,5 @@ const animationTimeline = () => {
     tl.restart();
   });
 };
-
 // Run fetch and animation in sequence
 fetchData();

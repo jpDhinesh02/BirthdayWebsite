@@ -6,9 +6,11 @@
     <title>Gift for you</title>
     <link rel="shortcut icon" type="image/png" href="img/gift.png" />
     <link rel="stylesheet" href="style/giftstyle.css">
+
 </head>
 <body>
     <div class="container">
+        <audio id="background-music-gift" src="audio/Surprised.mp3" preload="auto"></audio>
         <img src="img/giftscreen.png" alt="" class="lydia-dp">
         <div>
             <p id="replay" data-node-name="replayText">Your gift on the way My dear...</p>
@@ -16,5 +18,13 @@
     </div>
     
 </body>
-<script type="application/javascript" src="script/main.js"></script>
+<script>
+ window.addEventListener('load', function() {
+            const audio = document.getElementById('background-music-gift');
+            audio.load();
+            audio.play().catch(error => {
+                console.error("Audio playback failed:", error);
+            });
+        });
+</script>
 </html>

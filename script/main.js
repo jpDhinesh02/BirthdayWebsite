@@ -60,14 +60,18 @@ function updateCountdown() {
   waitingMessageElement.innerHTML = waitingMessages[randomIndex];
 
 }
+var audio
 if (now < birthday) {
   countdownElement.style.display = 'block';
   updateCountdown();
+  audio = new Audio('audio/wait.mp3');
+  audio.loop = true;
+  audio.autoplay = true;
   setInterval(updateCountdown, 1000);
 } else {
   countdownElement.style.display = 'none';
   contentElement.style.display = 'block';
-  var audio = new Audio('audio/Good_Morning_to_All(chosic.com).mp3');
+  audio = new Audio('audio/Good_Morning_to_All(chosic.com).mp3');
   audio.loop = true;
   audio.autoplay = true;
 }

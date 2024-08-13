@@ -5,7 +5,7 @@ html {
 body {
   margin: 0;
   font-family: "Work Sans", sans-serif;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .emptycontainer {
@@ -16,25 +16,32 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Ensure it doesn't block interactions */
+  pointer-events: none;
+  /* Ensure it doesn't block interactions */
+  z-index: 1;
 }
 
 .heart {
   position: absolute;
-  font-size: 2rem; /* Adjust size as needed */
+  font-size: 2rem;
+  /* Adjust size as needed */
   opacity: 0;
-  will-change: transform, opacity; /* Optimize performance */
-  transition: opacity 0.1s ease-out; /* Smooth opacity change */
+  will-change: transform, opacity;
+  /* Optimize performance */
+  transition: opacity 0.1s ease-out;
+  /* Smooth opacity change */
 }
 
 @keyframes flyUp {
   0% {
-      transform: translateY(0);
-      opacity: 1;
+    transform: translateY(0);
+    opacity: 1;
   }
+
   100% {
-      transform: translateY(-200px); /* Adjust height as needed */
-      opacity: 0;
+    transform: translateY(-200px);
+    /* Adjust height as needed */
+    opacity: 0;
   }
 }
 
@@ -61,7 +68,8 @@ body {
   font-size: 45px;
   color: #8762cb;
 }
-#waitingMessage{
+
+#waitingMessage {
   color: #8762cb;
 }
 
@@ -354,4 +362,59 @@ body {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  z-index: 2;
+  /* Bring the link above the heart container */
+  pointer-events: auto;
+  /* Ensure the link itself is clickable */
+  z-index: 500;
+}
+
+
+
+#magic-message {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  color: #8762cb;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: start;
+  z-index: 1000;
+  pointer-events: none;
+  /* Prevent blocking interactions */
+  animation: fadeIn 1s ease-in-out, dance 1s infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dance {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(-45%, -55%) rotate(5deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(-5deg);
+  }
+
+  75% {
+    transform: translate(-55%, -45%) rotate(5deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
 }

@@ -62,7 +62,7 @@ function updateCountdown() {
 }
 function enableAudioOnInteraction() {
   const interactionEvents = ['click', 'scroll', 'mousemove', 'keydown', 'touchstart'];
-  
+
   interactionEvents.forEach(event => {
     window.addEventListener(event, function playOnInteraction() {
       audio.play().catch(error => {
@@ -80,7 +80,7 @@ if (now < birthday) {
   audio = new Audio('audio/wait.mp3');
   audio.preload = 'auto';
   audio.loop = true;
-  audio.load(); 
+  audio.load();
   audio.play().catch(error => {
     console.warn("Autoplay was blocked:", error);
     enableAudioOnInteraction();
@@ -92,7 +92,7 @@ if (now < birthday) {
   audio = new Audio('audio/Good_Morning_to_All(chosic.com).mp3');
   audio.preload = 'auto';
   audio.loop = true;
-  audio.load(); 
+  audio.load();
   audio.play().catch(error => {
     console.warn("Autoplay was blocked:", error);
     enableAudioOnInteraction();
@@ -412,39 +412,45 @@ fetchData();
 
 document.addEventListener('click', (event) => {
   const heartContainer = document.getElementById('heart-container');
-  const numHearts = 10; // Number of hearts per click
+  const numHearts = 5; // Number of hearts per click
   const heartSize = 2; // Size multiplier
   const delayBetweenHearts = 100; // Delay between each heart in milliseconds
 
   for (let i = 0; i < numHearts; i++) {
-      setTimeout(() => {
-          // Create heart element
-          const heart = document.createElement('span');
-          heart.className = 'heart';
-          heart.textContent = '❤️';
-          heart.style.fontSize = `${heartSize}rem`;
-          
-          // Randomize the position around the click
-          const offsetX = (Math.random() - 0.5) * 20; // Adjust range for randomness
-          const offsetY = (Math.random() - 0.5) * 20;
-          heart.style.left = `${event.clientX + offsetX}px`;
-          heart.style.top = `${event.clientY + offsetY}px`;
+    setTimeout(() => {
+      // Create heart element
+      const heart = document.createElement('span');
+      heart.className = 'heart';
+      heart.textContent = '❤️';
+      heart.style.fontSize = `${heartSize}rem`;
 
-          // Apply animation
-          heart.style.opacity = 1;
-          heart.style.animation = `flyUp 1s forwards`;
+      // Randomize the position around the click
+      const offsetX = (Math.random() - 0.5) * 20; // Adjust range for randomness
+      const offsetY = (Math.random() - 0.5) * 20;
+      heart.style.left = `${event.clientX + offsetX}px`;
+      heart.style.top = `${event.clientY + offsetY}px`;
 
-          // Append heart to container
-          heartContainer.appendChild(heart);
+      // Apply animation
+      heart.style.opacity = 1;
+      heart.style.animation = `flyUp 1s forwards`;
 
-          // Remove heart from DOM after animation ends
-          heart.addEventListener('animationend', () => {
-              heart.remove();
-          }, { once: true });
-      }, i * delayBetweenHearts); // Stagger heart creation
+      // Append heart to container
+      heartContainer.appendChild(heart);
+
+      // Remove heart from DOM after animation ends
+      heart.addEventListener('animationend', () => {
+        heart.remove();
+      }, { once: true });
+    }, i * delayBetweenHearts); // Stagger heart creation
   }
 });
 
 
+document.addEventListener('click', () => {
+  const magicMessage = document.getElementById('magic-message');
+  if (magicMessage) {
+    magicMessage.style.display = 'none';
+  }
+});
 
 

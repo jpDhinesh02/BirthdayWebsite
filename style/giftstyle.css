@@ -1,27 +1,94 @@
 body {
-    height: 70vh;
-    width: 100vw;
-    margin: 0 auto;
-    position: relative;
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    margin: 5;
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
 }
-
+.text {
+  margin-top: 10%;
+}
 .container {
-    text-align: center;
-    margin-top: 75px;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .lydia-dp {
-    width: 180%;
-    max-width: 300px;
+  width: 180%;
+  max-width: 300px;
 }
+
 p {
-    font-size: 2rem;
-    font-weight: lighter;
+  font-size: 2rem;
+  font-weight: lighter;
+}
+
+#order {
+  font-weight: bold;
+  cursor: pointer;
+  height: 40px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #2ea86f;
+  color: white;
+  border: none;
+  position: absolute;
+}
+
+/* Modal background */
+.modal {
+    display: none;/* Hidden by default*/
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+  }
+  
+  /* Modal content */
+  .modal-content {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fefefe;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #04e917;
+    width: 55%;
+    height: 30%;
+    border-radius: 15px;
+  }
+  
+
+@media (max-width: 768px) {
+    p {
+      font-size: 1.2rem; /* Smaller font size on mobile devices */
+    }
+  
+    #order {
+      font-size: 0.9rem; /* Adjust button font size */
+      height: 35px;
+      padding: 8px 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    p {
+      font-size: 1rem; /* Further reduce font size on very small screens */
+    }
+  
+    #order {
+      font-size: 0.8rem; /* Adjust button font size further */
+      height: 30px;
+      padding: 6px 10px;
+    }
   }

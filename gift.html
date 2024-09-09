@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gift for you</title>
     <link rel="shortcut icon" type="image/png" href="img/gift.png" />
-    <link rel="stylesheet" href="style/giftstyle.css">
-
-</head>
-<body>
+    <link rel="stylesheet" href="style/giftstyle.css" />
+  </head>
+  <body>
     <div class="container">
-        <audio id="background-music-gift" src="audio/Surprised.mp3" preload="auto"></audio>
-        <img src="img/giftscreen.png" alt="" class="lydia-dp">
-        <div>
-            <p id="replay" data-node-name="replayText">Your gift on the way My dear...</p>
-        </div>
+      <audio
+        id="background-music-gift"
+        src="audio/Surprised.mp3"
+        preload="auto"
+      ></audio>
+      <!-- <img src="img/giftscreen.png" alt="" class="lydia-dp"> -->
+      <div class="text">
+        <p id="replay" data-node-name="replayText">
+          Please place order for your Gift...
+        </p>
+      </div>
+      <div class="button">
+        <button id="order">Place Order</button>
+      </div>
     </div>
-    
-</body>
-<script>
- window.addEventListener('load', function() {
-            const audio = document.getElementById('background-music-gift');
-            audio.load();
-            audio.play().catch(error => {
-                console.error("Audio playback failed:", error);
-            });
-        });
-</script>
+    <div class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <h1>How dare... You catch me!</h1>
+        <p>Anyways once again Happiee <em>B'day</em> to <em>U</em></p>
+        <p><b>Dearest <em>BestFriend</em></b></p>
+        <p>Get ready—your gift will be arriving soon!</p>
+      </div>
+    </div>
+  </body>
+  <script type="application/javascript" src="script/gift.js"></script>
 </html>

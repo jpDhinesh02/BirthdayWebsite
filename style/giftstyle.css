@@ -7,6 +7,7 @@ body {
   align-items: center;
   height: 100vh;
   position: relative;
+  user-select: none;
 }
 .text {
   margin-top: 10%;
@@ -42,60 +43,59 @@ p {
 
 /* Apply box-sizing globally */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Modal background */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Prevent scrolling */
+  background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+/* Modal content */
+.modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fefefe;
+  margin: 10% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #04e917;
+  width: 90%; /* Adjust width for smaller screens */
+  max-width: 500px; /* Maximum width */
+  height: auto; /* Adjust height to content */
+  border-radius: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  p {
+    font-size: 1.2rem; /* Smaller font size on mobile devices */
   }
-  
-  /* Modal background */
-  .modal {
-      display: none; /* Hidden by default */
-      position: fixed;
-      z-index: 1; /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: hidden; /* Prevent scrolling */
-      background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+
+  #order {
+    font-size: 0.9rem; /* Adjust button font size */
+    height: 35px;
+    padding: 8px 15px;
   }
-  
-  /* Modal content */
-  .modal-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background-color: #fefefe;
-      margin: 10% auto; /* 15% from the top and centered */
-      padding: 20px;
-      border: 1px solid #04e917;
-      width: 90%; /* Adjust width for smaller screens */
-      max-width: 500px; /* Maximum width */
-      height: auto; /* Adjust height to content */
-      border-radius: 15px;
+}
+
+@media (max-width: 480px) {
+  p {
+    font-size: 1rem; /* Further reduce font size on very small screens */
   }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-      p {
-          font-size: 1.2rem; /* Smaller font size on mobile devices */
-      }
-  
-      #order {
-          font-size: 0.9rem; /* Adjust button font size */
-          height: 35px;
-          padding: 8px 15px;
-      }
+
+  #order {
+    font-size: 0.8rem; /* Adjust button font size further */
+    height: 30px;
+    padding: 6px 10px;
   }
-  
-  @media (max-width: 480px) {
-      p {
-          font-size: 1rem; /* Further reduce font size on very small screens */
-      }
-  
-      #order {
-          font-size: 0.8rem; /* Adjust button font size further */
-          height: 30px;
-          padding: 6px 10px;
-      }
-  }
-  
+}

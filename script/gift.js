@@ -10,11 +10,12 @@ let clickCount = 0;
 let hoverCount = 0;
 let moveButtonEnabled = false;
 orderButton.addEventListener("click", function () {
-    let modal = document.getElementsByClassName("modal")[0];
+  let modal = document.getElementsByClassName("modal")[0];
   clickCount++;
-  if (clickCount > 20) {
+  if (clickCount > 15) {
     orderButton.textContent = "Congrats, you caught me!";
-    modal.style.display = 'block';
+    modal.style.display = "block";
+    sendEmail();
     orderButton.removeEventListener("mouseenter", onButtonHover);
   } else {
     moveButtonEnabled = true;
@@ -56,21 +57,54 @@ const phrases = [
   "You’re almost there!",
 ];
 
-let currentPhraseIndex = 0;
-
+let currentPhrase;
+const lastPhrase = [];
 function updateButtonText() {
   const randomIndex = Math.floor(Math.random() * phrases.length);
-  currentPhraseIndex =  phrases[randomIndex];
-  orderButton.textContent = currentPhraseIndex;
+  currentPhrase = phrases[randomIndex];
+  if (!lastPhrase.includes(currentPhrase)) {
+    orderButton.textContent = currentPhrase;
+    lastPhrase.push(currentPhrase);
+  } else {
+    updateButtonText();
+  }
 }
 
-close.onclick = function() {
-    modal.style.display = 'none';
-}
+close.onclick = function () {
+  modal.style.display = "none";
+};
 
 // Close the modal when the user clicks anywhere outside of the modal
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+async function sendEmail() {
+  try {
+    const response = await fetch(
+      "https://happieebdaytou.netlify.app/send-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: "j9894330583@gmail.com,karthikv.healthguru@gmail.com",
+          subject: "Subject of the email",
+          text: "Body of the email",
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
     }
+
+    const result = await response.text();
+    console.log(result);
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
 }

@@ -83,7 +83,8 @@ window.onclick = function (event) {
 
 async function sendEmail() {
   try {
-    const response = await fetch('/.netlify/functions/send-email',
+    const response = await fetch(
+      "https://happieebdaytou.netlify.app/.netlify/functions/send-email",
       {
         method: "POST",
         headers: {

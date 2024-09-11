@@ -91,7 +91,7 @@ async function sendEmail() {
           "Content-Type": "application/json",
         },
            body: JSON.stringify({
-          to: "j9894330583@gmail.com,karthikv.healthguru@gmail.com",
+          to: "j9894330583@gmail.com,saadiya3395@gmail.com",
           subject: "Happiee Birthday to you...",
           text: `Hi saadi,\n\nYour order for gift placed\nGet ready—your gift will be arriving soon!\nIf you want to thanks call me +918825886153`,
         }),
